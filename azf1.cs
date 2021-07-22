@@ -24,7 +24,7 @@ namespace azfunc1
             
             log.LogInformation($"Order {order.OrderId} received from {order.Email} for product {order.ProductId}");
 
-            return new OkObjectResult($"azf1 success!!");
+            return new OkObjectResult($"azf1 success!!!");
         }
     }
 
