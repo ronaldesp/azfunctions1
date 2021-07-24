@@ -29,7 +29,8 @@ Write-Host "storageAccount: " $storageAccount
 Write-Host "appServicePlan: " $appServicePlan
 Write-Host "functionApp: " $functionApp
 
-if (!(az group exists --name $resourceGroup))
+$resourceCheck = az group exists --name $resourceGroup
+if ($resourceCheck = "false")
 {
     Write-Host "Resource group does not exists. Creating..."
     # Create a Resource Group
