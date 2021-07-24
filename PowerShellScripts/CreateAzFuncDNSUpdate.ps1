@@ -30,7 +30,7 @@ else {
     Write-Host "Resource group already exists"
 }
 
-$storageCheck = az storage account list --query "[?name=='$appServicePlan']" | ConvertFrom-Json
+$storageCheck = az storage account list --query "[?name=='$storageAccount']" | ConvertFrom-Json
 $storageExists = $storageCheck.Length -gt 0
 if (!$storageExists)
 {
@@ -44,18 +44,18 @@ else {
 }
 
 
-# To create an App service plan
-#az appservice plan create -g rgAzFuncDevOpsLab -n AzFuncServPlan --sku S1
-
 $planCheck = az appservice plan list --query "[?name=='$appServicePlan']" | ConvertFrom-Json
 $planExists = $planCheck.Length -gt 0
 if (!$planExists) {
-    Write-Host "Function App does not exists. Creating..."
+    Write-Host "App Service Plan does not exists. Creating..."
+    # To create an App service plan
+    az appservice plan create -g $resourceGroup -n $appServicePlan --sku S1
+    Write-Host "App Service Plan created"
 }
 else {
     Write-Host $planCheck.Length
     Write-Host $planCheck
-    Write-Host "Function App does not exists. Creating..."
+    Write-Host "App Service Plan does not exists. Creating..."
 }
 
 $functionAppCheck = az functionapp list --query "[?name=='$functionApp']" | ConvertFrom-Json
