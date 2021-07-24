@@ -13,9 +13,9 @@ param (
     # $appServicePlanName='plan-WinApp-Ops-Functions-cace',
     # $functionAppName='func-Ops-cf-dns-update02-cace'
 
-az login
-az account set --subscription "a74522a1-9e20-48ba-8edd-afd9172ec929"
-az account list --output table
+# az login
+# az account set --subscription "a74522a1-9e20-48ba-8edd-afd9172ec929"
+# az account list --output table
 
 $resourceGroup = $ResourceGroupName
 $location = $LocationName
