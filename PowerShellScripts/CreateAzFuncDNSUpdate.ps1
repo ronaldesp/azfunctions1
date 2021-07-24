@@ -32,7 +32,7 @@ else {
 
 $storageCheck = az storage account list --query "[?name=='$appServicePlan']" | ConvertFrom-Json
 $storageExists = $storageCheck.Length -gt 0
-if (!$storageExists) {
+if (!$storageExists)
 {
     Write-Host "Storage Account does not exists. Creating..."
     # Create Storage Account
